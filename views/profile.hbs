@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+        <style>
+        body{
+            background: linear-gradient(to right, transparent 10%, rgb(16, 158, 158) 100%);
+        }
+        .sign_up{
+            height: 500px; 
+            width: 50%; 
+            border: 10px solid transparent;
+            border-image: linear-gradient(to right, transparent 0%, cyan 100%);
+            border-image-slice: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 300px;
+            margin-top: 80px;
+        }
+        input{
+            border-radius: 10px;
+        }
+        button{
+           
+            border-radius: 10px;
+        }
+        .logout{
+            
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        #srch{
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="logout">
+        <form action="/logout" method="get">
+        <button class="btn" type="submit">Logut</button>
+        </form>
+    </div>
+    <div class="sign_up">
+    <h1>Your Profile!</h1>
+    
+        <p><b>Welcome:</b> {{name}}</p>
+
+        <p><b>organisation:</b> {{org_name}}</p>
+            
+            <h2>List of all the Employee</h2>
+            <div class="logout">
+            <form action="/getAll" method="get">
+            <button class="btn" type="submit">See!</button>
+            </form>
+        </div>
+
+
+        <div id="srch">
+            <h1>search Employee</h1>
+                <form action="/getProfile" method="POST">
+                <input type="text" name="first_name" placeholder="first_name"><br><br>
+                <input type="text" name="last_name" placeholder="last_name"><br><br>
+                <input type="text" name="employee_id" placeholder="employee_ID"><br><br>
+                <button   type="submit">search</button>
+                </form>
+        </div>
+            <h2 id="emp">Search Employee</h2>
+            <button  id="btn" type="submit">search</button>
+    </div>
+
+    
+    <script>
+        var search=document.getElementById('btn');
+        var search1=document.getElementById('emp');
+        var main_div=document.getElementById('srch');
+        search.addEventListener('click', () => {
+        main_div.style.display='block'
+        search.style.display='none'
+        search1.style.display='none'
+
+        })
+    </script>
+</body>
+</html>
